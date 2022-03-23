@@ -1,0 +1,2 @@
+ssh-keygen -b 2048 -t rsa
+ssh-copy-id -i ~/.ssh/id_rsa.pub vagrant@master-1.local
