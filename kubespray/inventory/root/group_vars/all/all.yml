@@ -1,4 +1,10 @@
 ---
+# min supported kube_version
+# kube_version_min_required: v1.18.0
+
+## Directory where etcd data stored
+etcd_data_dir: /var/lib/etcd
+
 ## Directory where the binaries will be installed
 bin_dir: /usr/local/bin
 
@@ -19,7 +25,7 @@ bin_dir: /usr/local/bin
 ## Internal loadbalancers for apiservers
 # loadbalancer_apiserver_localhost: true
 # valid options are "nginx" or "haproxy"
-# loadbalancer_apiserver_type: nginx  # valid values "nginx" or "haproxy"
+loadbalancer_apiserver_type: nginx # valid values "nginx" or "haproxy"
 
 ## If the cilium is going to be used in strict mode, we can use the
 ## localhost connection and not use the external LB. If this parameter is
@@ -29,7 +35,6 @@ bin_dir: /usr/local/bin
 ## Local loadbalancer should use this port
 ## And must be set port 6443
 loadbalancer_apiserver_port: 6443
-
 ## If loadbalancer_apiserver_healthcheck_port variable defined, enables proxy liveness check for nginx.
 loadbalancer_apiserver_healthcheck_port: 8081
 
@@ -48,9 +53,15 @@ loadbalancer_apiserver_healthcheck_port: 8081
 # cloud_provider:
 
 ## When cloud_provider is set to 'external', you can set the cloud controller to deploy
-## Supported cloud controllers are: 'openstack', 'vsphere' and 'hcloud'
+## Supported cloud controllers are: 'openstack' and 'vsphere'
 ## When openstack or vsphere are used make sure to source in the required fields
 # external_cloud_provider:
+
+## kubeadm deployment mode
+kubeadm_enabled: false
+
+# Skip alert information
+skip_non_kubeadm_warning: true
 
 ## Set these proxy values in order to update package manager and docker daemon to use proxies
 # http_proxy: ""
@@ -110,6 +121,3 @@ no_proxy_exclude_workers: false
 
 ## Check if access_ip responds to ping. Set false if your firewall blocks ICMP.
 # ping_access_ip: true
-
-# sysctl_file_path to add sysctl conf to
-# sysctl_file_path: "/etc/sysctl.d/99-sysctl.conf"
