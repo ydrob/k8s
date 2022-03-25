@@ -1,3 +1,7 @@
+
+sudo apt install -y pip net-tools sshpass
+ssh-keygen -b 2048 -t rsa -N "" -f /home/vagrant/.ssh/id_rsa
+
 sshpass -p vagrant ssh-copy-id -o "StrictHostKeyChecking=no" -i /home/vagrant/.ssh/id_rsa.pub vagrant@master01
 cat /home/vagrant/.ssh/id_rsa.pub | ssh -o "StrictHostKeyChecking=no" vagrant@master01 'cat >> /home/vagrant/.ssh/authorized_keys'
 sshpass -p vagrant ssh-copy-id -o "StrictHostKeyChecking=no" -i /home/vagrant/.ssh/id_rsa.pub vagrant@master02
@@ -8,5 +12,7 @@ sshpass -p vagrant ssh-copy-id -o "StrictHostKeyChecking=no" -i /home/vagrant/.s
 cat /home/vagrant/.ssh/id_rsa.pub | ssh -o "StrictHostKeyChecking=no" vagrant@node01 'cat >> /home/vagrant/.ssh/authorized_keys'
 sshpass -p vagrant ssh-copy-id -o "StrictHostKeyChecking=no" -i /home/vagrant/.ssh/id_rsa.pub vagrant@node02
 cat /home/vagrant/.ssh/id_rsa.pub | ssh -o "StrictHostKeyChecking=no" vagrant@node02 'cat >> /home/vagrant/.ssh/authorized_keys'
+sshpass -p vagrant ssh-copy-id -o "StrictHostKeyChecking=no" -i /home/vagrant/.ssh/id_rsa.pub vagrant@node03
+cat /home/vagrant/.ssh/id_rsa.pub | ssh -o "StrictHostKeyChecking=no" vagrant@node03 'cat >> /home/vagrant/.ssh/authorized_keys'
 sshpass -p vagrant ssh-copy-id -o "StrictHostKeyChecking=no" -i /home/vagrant/.ssh/id_rsa.pub vagrant@ingress01
 cat /home/vagrant/.ssh/id_rsa.pub | ssh -o "StrictHostKeyChecking=no" vagrant@ingress01 'cat >> /home/vagrant/.ssh/authorized_keys'
