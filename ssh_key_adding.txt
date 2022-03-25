@@ -1,0 +1,12 @@
+sshpass -p vagrant ssh-copy-id -o "StrictHostKeyChecking=no" -i /home/vagrant/.ssh/id_rsa.pub vagrant@master01
+cat /home/vagrant/.ssh/id_rsa.pub | ssh -o "StrictHostKeyChecking=no" vagrant@master01 'cat >> /home/vagrant/.ssh/authorized_keys'
+sshpass -p vagrant ssh-copy-id -o "StrictHostKeyChecking=no" -i /home/vagrant/.ssh/id_rsa.pub vagrant@master02
+cat /home/vagrant/.ssh/id_rsa.pub | ssh -o "StrictHostKeyChecking=no" vagrant@master02 'cat >> /home/vagrant/.ssh/authorized_keys'
+sshpass -p vagrant ssh-copy-id -o "StrictHostKeyChecking=no" -i /home/vagrant/.ssh/id_rsa.pub vagrant@master03
+cat /home/vagrant/.ssh/id_rsa.pub | ssh -o "StrictHostKeyChecking=no" vagrant@master03 'cat >> /home/vagrant/.ssh/authorized_keys'
+sshpass -p vagrant ssh-copy-id -o "StrictHostKeyChecking=no" -i /home/vagrant/.ssh/id_rsa.pub vagrant@node01
+cat /home/vagrant/.ssh/id_rsa.pub | ssh -o "StrictHostKeyChecking=no" vagrant@node01 'cat >> /home/vagrant/.ssh/authorized_keys'
+sshpass -p vagrant ssh-copy-id -o "StrictHostKeyChecking=no" -i /home/vagrant/.ssh/id_rsa.pub vagrant@node02
+cat /home/vagrant/.ssh/id_rsa.pub | ssh -o "StrictHostKeyChecking=no" vagrant@node02 'cat >> /home/vagrant/.ssh/authorized_keys'
+sshpass -p vagrant ssh-copy-id -o "StrictHostKeyChecking=no" -i /home/vagrant/.ssh/id_rsa.pub vagrant@ingress01
+cat /home/vagrant/.ssh/id_rsa.pub | ssh -o "StrictHostKeyChecking=no" vagrant@ingress01 'cat >> /home/vagrant/.ssh/authorized_keys'
